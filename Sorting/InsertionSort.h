@@ -13,14 +13,11 @@ template<typename T>
 void insertionSort(T arr[], int n) {
     for (int i = 1; i < n; ++i) {
         T now = arr[i];
-        for (int j = i; j > 0; --j) {
-            if (arr[j - 1] > now)
-                arr[j] = arr[j - 1];
-            else {
-                arr[j] = now;
-                break;
-            }
+        int j = i;
+        for (; j > 0 && arr[j - 1] > now; --j) {
+            arr[j] = arr[j - 1];
         }
+        arr[j] = now;
     }
 }
 
@@ -28,14 +25,11 @@ template<typename T>
 void insertionSort(T arr[], int l, int r) {
     for (int i = l + 1; i <= r; ++i) {
         T now = arr[i];
-        for (int j = i; j > l; --j) {
-            if (arr[j - 1] > now)
-                arr[j] = arr[j - 1];
-            else {
-                arr[j] = now;
-                break;
-            }
+        int j = i;
+        for (; j > l && arr[j - 1] > now; --j) {
+            arr[j] = arr[j-1];
         }
+        arr[j] = now;
     }
 }
 

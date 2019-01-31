@@ -30,7 +30,11 @@ namespace SortTestHelper {
     }
 
     template<typename T>
-    void testSort(string sortName, void(*sort)(T[], int), T arr[], int n) {
+    void testSort(string sortName, void(*sort)(T[], int), T array[], int n) {
+        T arr[n];
+        for (int j = 0; j < n; ++j) {
+            arr[j] = array[j];
+        }
         clock_t startTime = clock();
         sort(arr, n);
         clock_t endTime = clock();
@@ -39,6 +43,14 @@ namespace SortTestHelper {
         }
 
         cout << sortName << " : " << double(endTime - startTime) / CLOCKS_PER_SEC << " s" << endl;
+    }
+
+    int *copyArray(int arr[], int n) {
+        int *copy = new int[n];
+        for (int i = 0; i < n; ++i) {
+            copy[i] = arr[i];
+        }
+        return copy;
     }
 }
 #endif //ALGORITHMS_SORTTESTHELPER_H

@@ -3,4 +3,4 @@ project(Algorithms)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(Algorithms Sorting/SelectionSort.h Sorting/SortTestHelper.h main.cpp Sorting/InsertionSort.h Sorting/MergeSort.h)
+add_executable(Algorithms Sorting/SelectionSort.h Sorting/SortTestHelper.h main.cpp Sorting/InsertionSort.h Sorting/MergeSort.h Sorting/QuickSort.h)
