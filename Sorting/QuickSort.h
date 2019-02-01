@@ -11,12 +11,10 @@ using namespace std;
 
 template<typename T>
 void __quickSort(T arr[], int l, int r) {
-//    if (r - l <= 15) {
-//        insertionSort(arr, l, r);
-//        return;
-//    }
-    if (l >= r)
+    if (r - l <= 15) {
+        insertionSort(arr, l, r);
         return;
+    }
     swap(arr[rand() % (r - l + 1) + l], arr[l]);
     int j = l;
     for (int i = l + 1; i <= r; i++)
@@ -78,7 +76,7 @@ void __quickSort3_2(T arr[], int l, int r) {
     swap(arr[rand() % (r - l + 1) + l], arr[l]);
     int lt = l;
     int gt = r + 1;
-    for (int i = l + 1; i <= gt; ++i) {
+    for (int i = l + 1; i < gt; ++i) {
         if (arr[i] > arr[l])
             swap(arr[i--], arr[--gt]);
         else if (arr[i] < arr[l])
