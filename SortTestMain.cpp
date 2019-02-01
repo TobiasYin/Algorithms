@@ -9,12 +9,13 @@
 #include "Sorting/InsertionSort.h"
 #include "Sorting/MergeSort.h"
 #include "Sorting/QuickSort.h"
+#include "Sorting/HeapSort.h"
 
 using namespace std;
 
 
 int main() {
-    int n = 500000;
+    int n = 100000;
     int *test = SortTestHelper::generateRandomArray(n, 0, 10);
 //    SortTestHelper::testSort("Insertion Sort",insertionSort,test,n);
 //    SortTestHelper::testSort("Selection Sort",selectionSort,test,n);
@@ -25,10 +26,15 @@ int main() {
     SortTestHelper::testSort("Quick Sort 2", quickSort2, test, n);
     SortTestHelper::testSort("Quick Sort 3", quickSort3, test, n);
     SortTestHelper::testSort("Quick Sort 3_2", quickSort2, test, n);
+    SortTestHelper::testSort("Quick Sort 3_2", quickSort2, test, n);
+    SortTestHelper::testSort("Heap Sort",heapSort1,test,n);
+    SortTestHelper::testSort("Heap Sort 2",heapSort2,test,n);
+    SortTestHelper::testSort("Heap Sort 3",heapSort3,test,n);
     delete[] test;
 //    int *t = SortTestHelper::generateRandomArray(10, 0, 10);
 //    SortTestHelper::printArray(t, 10);
-//    quickSort3_2(t, 10);
+//    heapSort2(t, 10);
 //    SortTestHelper::printArray(t, 10);
+//    delete[] t;
     return 0;
 }
