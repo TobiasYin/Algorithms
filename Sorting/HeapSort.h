@@ -48,7 +48,7 @@ void heapSort3(T arr[], int n) {
     for (int i = (n - 1) / 2; i >= 0; --i) {
         shiftDown(arr, i, n);
     }
-    for (int i = n - 1; i >= 0; --i) {
+    for (int i = n - 1; i > 0; --i) {
         swap(arr[0], arr[i]);
         shiftDown(arr, 0, i);
     }
