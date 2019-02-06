@@ -3,4 +3,4 @@ project(Algorithms)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(Algorithms Sorting/SelectionSort.h Sorting/SortTestHelper.h SortTestMain.cpp Sorting/InsertionSort.h Sorting/MergeSort.h Sorting/IndexHeap.h Sorting/QuickSort.h Sorting/MaxHeap.h HeapTestMain.cpp Sorting/HeapSort.h)
+add_executable(Algorithms Sorting/SelectionSort.h Sorting/SortTestHelper.h SortTestMain.cpp Sorting/InsertionSort.h Sorting/MergeSort.h Sorting/IndexHeap.h Sorting/QuickSort.h Sorting/MaxHeap.h HeapTestMain.cpp Sorting/HeapSort.h Search/BinarySearch.h Search/BinarySearchTree.h main.cpp UnionFInd.h)

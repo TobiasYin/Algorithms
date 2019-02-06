@@ -14,7 +14,7 @@
 using namespace std;
 
 
-int main() {
+int nomain2() {
     int n = 100000;
     int *test = SortTestHelper::generateRandomArray(n, 0, 10);
 //    SortTestHelper::testSort("Insertion Sort",insertionSort,test,n);
