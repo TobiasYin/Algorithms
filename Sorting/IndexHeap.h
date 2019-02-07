@@ -23,7 +23,7 @@ public:
         count = 0;
         this->capacity = capacity;
         index = new int[capacity];
-        rev = new int[rev];
+        rev = new int[capacity];
         for (int i = 0; i < capacity; ++i) {
             rev[i] = -1;
         }

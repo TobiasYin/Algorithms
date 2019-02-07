@@ -1,81 +1,43 @@
 //
-// Created by Tobias on 2019/2/6.
+// Created by Tobias on 2019/2/7.
 //
 
 #include <iostream>
-#include <ctime>
-#include "GraphTheory/SparseGraph.h"
+#include <cassert>
 #include "GraphTheory/DenseGraph.h"
+#include "GraphTheory/SparseGraph.h"
 #include "GraphTheory/ReadGraph.h"
-#include "GraphTheory/Component.h"
-#include "GraphTheory/Path.h"
-#include "GraphTheory/ShortestPath.h"
+#include "GraphTheory/Edge.h"
+#include <string>
+#include <iomanip>
+#include "GraphTheory/LazyPrimMST.h"
+#include <vector>
+#include "GraphTheory/PrimMST.h"
+#include "GraphTheory/KruskalMST.h"
 
 using namespace std;
 
-
-int testmain() {
-    int N = 20;
-    int M = 100;
-    srand(time(NULL));
-    SparseGraph g1(N, false);
-
-    for (int i = 0; i < M; ++i) {
-        int a = rand() % N;
-        int b = rand() % N;
-        g1.addEdge(a, b);
-    }
-
-    for (int j = 0; j < N; ++j) {
-        cout << j << " : ";
-        SparseGraph::adjIterator adj(g1, j);
-        for (int i = adj.begin(); !adj.end(); i = adj.next()) {
-            cout << i << ", ";
-        }
-        cout << endl;
-    }
-    cout << endl;
-
-    DenseGraph g2(N, false);
-
-    for (int i = 0; i < M; ++i) {
-        int a = rand() % N;
-        int b = rand() % N;
-        g2.addEdge(a, b);
-    }
-
-    for (int j = 0; j < N; ++j) {
-        cout << j << " : ";
-        DenseGraph::adjIterator adj(g2, j);
-        for (int i = adj.begin(); !adj.end(); i = adj.next()) {
-            cout << i << ", ";
-        }
-        cout << endl;
-    }
-    cout << endl;
-
-
-    return 0;
-}
-
 int main() {
-    int V = 13;
-    int E = 13;
     string filename = "D:\\Project\\Algorithms\\GraphTheory\\testG1.txt";
-    string filename2 = "D:\\Project\\Algorithms\\GraphTheory\\testG2.txt";
-    DenseGraph g1(V, false);
-    SparseGraph g2(V, false);
-    ReadGraph<DenseGraph> r1(g1, filename);
-    ReadGraph<SparseGraph> r2(g2, filename);
+    int V = 8;
+    cout << fixed << setprecision(2);
+    DenseGraph<double> g1 = DenseGraph<double>(V, false);
+    ReadGraph<DenseGraph<double>, double> r1(g1, filename);
     g1.show();
+
+    cout << endl;
+    SparseGraph<double> g2 = SparseGraph<double>(V, false);
+    ReadGraph<SparseGraph<double>, double> r2(g2, filename);
     g2.show();
-    Component<SparseGraph> c1(g2);
-    SparseGraph g3(6, false);
-    ReadGraph<SparseGraph> r3(g3, filename2);
-    Component<SparseGraph> c2(g3);
-    cout << c1.count()<<" "<<c2.count()<<endl;
-    Path<SparseGraph> p(g3,0);
-    p.showPath(5);
-    ShortestPath<SparseGraph> sp(g3,0);
-    sp.showPath(5);
+
+    cout << endl;
+    //Test lazyPrimMst
+    KruskalMST<SparseGraph<double>, double> mst(g2);
+    vector<Edge<double>> res = mst.mstEdges();
+    for (int i = 0; i < res.size(); ++i) {
+        cout << res[i]<<endl;
+    }
+    cout<<endl;
+    cout<<mst.result();
+    return 0;
 }
