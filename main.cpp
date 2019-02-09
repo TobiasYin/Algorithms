@@ -1,43 +1,27 @@
 //
-// Created by Tobias on 2019/2/7.
+// Created by Tobias on 2019/2/8.
 //
 
 #include <iostream>
-#include <cassert>
-#include "GraphTheory/DenseGraph.h"
-#include "GraphTheory/SparseGraph.h"
-#include "GraphTheory/ReadGraph.h"
-#include "GraphTheory/Edge.h"
-#include <string>
-#include <iomanip>
-#include "GraphTheory/LazyPrimMST.h"
 #include <vector>
-#include "GraphTheory/PrimMST.h"
-#include "GraphTheory/KruskalMST.h"
+#include <cassert>
+#include "GraphTheory/ReadGraph.h"
+#include "GraphTheory/SparseGraph.h"
+#include "GraphTheory/Edge.h"
+#include "GraphTheory/Dijkstra.h"
 
 using namespace std;
 
 int main() {
     string filename = "D:\\Project\\Algorithms\\GraphTheory\\testG1.txt";
     int V = 8;
-    cout << fixed << setprecision(2);
-    DenseGraph<double> g1 = DenseGraph<double>(V, false);
-    ReadGraph<DenseGraph<double>, double> r1(g1, filename);
-    g1.show();
-
-    cout << endl;
-    SparseGraph<double> g2 = SparseGraph<double>(V, false);
-    ReadGraph<SparseGraph<double>, double> r2(g2, filename);
-    g2.show();
-
-    cout << endl;
-    //Test lazyPrimMst
-    KruskalMST<SparseGraph<double>, double> mst(g2);
-    vector<Edge<double>> res = mst.mstEdges();
-    for (int i = 0; i < res.size(); ++i) {
-        cout << res[i]<<endl;
+    SparseGraph<double> g = SparseGraph<double>(V, true);
+    ReadGraph<SparseGraph<double>, double> r(g, filename);
+    Dijkstra<SparseGraph<double>, double> dij(g, 0);
+    vector<Edge<double >> v;
+    dij.shortestPath(5, v);
+    for (int i = 0; i < v.size(); ++i) {
+        cout << v[i] << endl;
     }
-    cout<<endl;
-    cout<<mst.result();
     return 0;
 }
